@@ -1,28 +1,33 @@
 {
     "manifest_version": 3,
-    "name": "Reading time",
+    "name": "Focus Mode",
+    "description": "Practice running script on active tab - by enabling focus mode on Chrome's official Extensions and Chrome Web Store documentation.", 
     "version": "1.0",
-    "description": "Practice running script - by adding the reaading time to the Extension documentation articles", 
-    "action": {
-      "default_popup": "index.html",
-      "default_icon": "assets/icons/buttonicon.png"
-    },
     "icons": {
         "16": "assets/002-icons/icon-16.png",
         "32": "assets/002-icons/icon-32.png",
         "48": "assets/002-icons/icon-48.png",
         "128": "assets/002-icons/icon-128.png"
-    }, 
-    "content_scripts": [
-        {
-          "js": ["scripts/content.js"],
-          "matches": [
-            "https://developer.chrome.com/docs/extensions/*",
-            "https://developer.chrome.com/docs/devtools/*",
-            "https://developer.chrome.com/docs/workbox/*",
-            "https://developer.chrome.com/docs/webstore/*"
-          ]
+    },
+    "background": {
+        "service_worker": "background.js"
+    },
+    "action": {
+      "default_icon": {
+        "16": "assets/002-icons/icon-16.png",
+        "32": "assets/002-icons/icon-32.png",
+        "48": "assets/002-icons/icon-48.png",
+        "128": "assets/002-icons/icon-128.png"
         }
-      ]
+    },
+    "permissions": ["activeTab", "scripting"],
+    "commands": {
+      "_execute_action": {
+        "suggested_key": {
+          "default": "Ctrl+B", 
+          "mac": "Command+B"
+        }
+      }
+    }
 }
 
