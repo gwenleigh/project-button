@@ -1,0 +1,10 @@
+{
+    "manifest_version": 3,
+    "name": "Button Extensions",
+    "description": "Toy extension project to manage buttons",
+    "version": "1.0",
+    "action": {
+      "default_popup": "index.html",
+      "default_icon": "assets/icons/buttonicon.png"
+    }
+  }
