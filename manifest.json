@@ -1,33 +1,29 @@
 {
     "manifest_version": 3,
-    "name": "Focus Mode",
-    "description": "Practice running script on active tab - by enabling focus mode on Chrome's official Extensions and Chrome Web Store documentation.", 
+    "name": "Quick API Reference",
+    "description": "Quick API can speed up the building of Chrome extensions.", 
     "version": "1.0",
     "icons": {
-        "16": "assets/002-icons/icon-16.png",
-        "32": "assets/002-icons/icon-32.png",
-        "48": "assets/002-icons/icon-48.png",
-        "128": "assets/002-icons/icon-128.png"
+        "16": "assets/icon-16.png",
+        "32": "assets/icon-32.png",
+        "48": "assets/icon-48.png",
+        "128": "assets/icon-128.png"
     },
     "background": {
-        "service_worker": "background.js"
+        "service_worker": "service-worker.js", 
+        "type": "module"
     },
-    "action": {
-      "default_icon": {
-        "16": "assets/002-icons/icon-16.png",
-        "32": "assets/002-icons/icon-32.png",
-        "48": "assets/002-icons/icon-48.png",
-        "128": "assets/002-icons/icon-128.png"
-        }
+    "minimum_chrome_version": "102", 
+    "omnibox": {
+      "keyword": "api"
     },
-    "permissions": ["activeTab", "scripting"],
-    "commands": {
-      "_execute_action": {
-        "suggested_key": {
-          "default": "Ctrl+B", 
-          "mac": "Command+B"
-        }
+    "permissions": ["alarms", "storage"],
+    "hosted_permissions": ["https://extension-tips.glitch.me/*"],
+    "content_scripts": [
+      {
+        "matches": ["https://developer.chrome.com/docs/extensions/reference/*"],
+        "js": ["content.js"]
       }
-    }
+    ]
 }
 
