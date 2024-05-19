@@ -35,7 +35,22 @@
   - `onInputEntered()`: After the user selects a suggestion, `onInputEntered()` will open the corresponding Chrome API reference page.
   - `updateHistory()`: takes the omnibox input and saves it to `storage.local`. This way the most recent search term can be used later as an omnibox suggestion.
   - `setTimeout()` or `setInterval()` methods are commonly used to perform delayed or periodic tasks. However, these APIs can fail because the scheduler will cancel the timers when the service worker is terminated. Instead, extensions can use the `chrome.alarms API`.
-- `"host permission"`: use this to fetch data from a remote hosted location. 
+- `"host_permission"`: use this to fetch data from a remote hosted location. 
+
+### 0.0.5
+- The Action API controls the extension action (toolbar icon). When the user clicks on the extension action, it will either run some code or open a popup
+- `chrome.permissions` API to request declared optional permissions at run time rather than install time, so users understand why the permissions are needed and grant only those that are necessary.
+- `tabs.query()`: retrieve the tabs from specific URLs.
+- `tabs.update()`
+- `windows.update()`
+- JavaScript
+  - `Intl.Collator`: this **object** enables language-sensitive string comparison.
+  - `template tag`
+  - `URL constructor`
+  - Spread syntax
+- Tabs 
+  - `chrome.tabs`: this API is used to group and ungroup tabs, or to query what tabs are in groups.
+  - `chrome.tabGroups`: this API allows you to interact with the browser's tab grouping system. Use this API to modify and rearrange tab groups in the browser. 
 
 ## Commands used
 
@@ -72,6 +87,9 @@ https://developer.chrome.com/docs/extensions/get-started/tutorial/hello-world#st
 - Import scripts into service workers https://developer.chrome.com/docs/extensions/develop/concepts/service-workers/basics#import-scripts
 - Debugging the service worker https://developer.chrome.com/docs/extensions/get-started/tutorial/service-worker-events#step-3
 
+### 0.0.5
+- `Intl.Collator` https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Collator
+
 ## Assets used
 ### 0.0.1
 - Stop button icon
@@ -99,3 +117,7 @@ https://commons.wikimedia.org/wiki/File:Perspective-Button-Stop-icon.png
   - `SuggestResult` object https://developer.chrome.com/docs/extensions/reference/api/omnibox#type-SuggestResult
 - ⭐️ Message passing https://developer.chrome.com/docs/extensions/develop/concepts/messaging
 - Popover API https://developer.mozilla.org/en-US/docs/Web/API/Popover_API
+
+### 0.0.5
+- `chrome.permissions` https://developer.chrome.com/docs/extensions/reference/api/permissions
+- `chrome.tabGroups` https://developer.chrome.com/docs/extensions/reference/api/tabGroups
