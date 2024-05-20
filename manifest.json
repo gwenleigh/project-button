@@ -1,0 +1,19 @@
+{
+    "manifest_version": 3,
+    "name": "Button & message management extension",
+    "description": "Buttons that will make your day easier", 
+    "version": "1.0",
+    "icons": {
+    }, 
+    "content_scripts": [
+        {
+            "css": ["styles.css"],
+            "js": [ "scripts/buttonManager.js" ],
+            "matches": [ "http://127.0.0.1:5500/*" ],
+            "runAt": "document_start"
+        }
+    ],
+    "permissions": [
+        "http://127.0.0.1:5500/*"
+    ]
+}

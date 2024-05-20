@@ -1,0 +1,83 @@
+/* .parent-div {
+    background-color: rgb(93, 155, 210);
+    overflow: auto;
+    display: flex;
+    width: max-content;
+    flex-direction: column;
+}
+
+.parent-div:hover {
+    background-color: rgb(93, 155, 210);
+    overflow: auto;
+    display: flex;
+    width: max-content;
+    flex-direction: column;
+}
+
+.parent-div .child-div {
+    overflow: auto;
+    width: max-content;
+}
+
+.parent-span {
+    color: #fff;
+    font-weight: bold;
+    overflow: auto;
+    width: auto;
+    padding: 10px 15px 10px 15%;
+}
+
+.child-div {
+    display: none;
+    background-color: rgb(239, 248, 255);
+    color: #000;
+    font-weight: bold;
+    float: left;
+    width: max-content;
+    padding: 10px 15px 10px 15%;
+}
+
+.parent-div:hover .child-div {
+    display: block;
+    background-color: rgb(239, 248, 255);
+    color: #000;
+    font-weight: bold;
+    float: right;
+    width: max-content;
+    padding: 10px 15px 10px 15%;5
+} */
+
+.parent-div {
+    display: inline-block; /* Allows the width to fit the content */
+    position: relative; /* Required for absolute positioning of child divs */
+    flex-direction: column;
+}
+
+.parent-span {
+    background-color: rgb(158, 201, 247);
+    display: block; /* Ensure it behaves as a block element */
+    padding: 5px 10px 5px 10px;
+    border: 1px solid #000000; 
+    border-radius: 5px;
+}
+
+.child-div {
+    display: none; /* Hide child divs by default */
+    position: relative; 
+    left: 0; /* Align to the left of the parent-div */
+    top: 100%; /* Position it below the parent-div */
+    white-space: nowrap; /* Prevents text from wrapping */
+    background: white; /* Optional: background color for better visibility */
+    border: 1px solid #000000; /* Optional: border for better visibility */
+    border-radius: 5px;
+    padding: 5px 10px 5px 10px;
+}
+
+.parent-div:hover .child-div {
+    display: block; /* Show child divs on hover */
+}
+
+.parent-div:hover {
+    display: inline-block; /* Ensures the width adapts correctly */
+    padding: auto;
+}
