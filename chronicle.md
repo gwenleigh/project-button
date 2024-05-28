@@ -4,6 +4,7 @@
 - [Facts](#facts)
   - [Summaries]
     - [Summary Mon 20 May](#summary-mon-20-may): initial setup
+    - [Summary Mon 28 May](#summary-tue-28-may): initial setup
 - [Commands used](#commands-used)
 - [Resources](#resources)
 - [For later](#for-later)
@@ -85,10 +86,30 @@
     }
   ```
 #### Summary Mon 20 May
-  - 1) `html/css`: Set up a mock web page with a target area for buttons (that will be created by extension).
-  - 2) Configured `manifest.json`/`"permissions"` for local testing.
-  - 3) `JavaScript`: Tested running a script on the target.
+1) `html/css`: Set up a mock web page with a target area for buttons (that will be created by extension).
+2) Configured `manifest.json`/`"permissions"` for local testing.
+3) `JavaScript`: Tested running a script on the target.
 ![Initial setup](assets/journal/240520_initial_setup.png)
+
+### `102-prototype-buttons`
+- `push()` for arrays
+  ```
+  let array = [1, 2, 3];
+  array.push(4);
+  ```
+- `append()` for DOM nodes (elements)
+  ```
+  let parent = document.getElementById('parent');
+  let newElement = document.createElement('div');
+  parent.append(newElement); // newElement is now a child of parent
+  ```
+
+#### Summary Tue 28 May
+1) Tested DOM element structures for button composition
+  - `ul > [li, li, li ...]`
+  - `div > [button, button, button ...]` (adopted for now)
+2) Created functions for button set creation
+![Initial setup](assets/journal/240528_prototype_buttons_01.png)
 
 ## Commands used
 

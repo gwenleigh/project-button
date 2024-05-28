@@ -23,6 +23,7 @@ html, body {
 
 #column1 {
     width: 50%;
+    height: fit-content;
     padding: 0.5rem;
 }
 
@@ -34,9 +35,50 @@ html, body {
     width: 20%;
 }
 
-.button-style {
+.test-button-area {
+    width: 90%;
+    height: 90%;
+    border: 1px solid #000;
+    border-radius: 0.5rem;
+    background-color: green;    
+}
+
+.buttons-div {
+    width: fit-content;   
+    display: flex;
+    flex-direction: column;
+}
+
+.label-button-style {
     padding: 0.5rem 1rem 0.5rem 1rem;
+    border: 1px, solid, #000;
     border-radius: 0.35rem;
     background-color: coral;
     font-weight: bold;
+}
+
+.button-style {
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    border: 1px, solid, #000;
+    border-radius: 0.35rem;
+    background-color: rgb(246, 178, 154);
+    font-weight: bold;
+}
+
+/* .hidden {
+    display: none;
+} */
+
+.ul-style {
+    width: fit-content;
+    background-color: #cfb300;
+}
+
+.li-style { 
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    width: fit-content;
+    border: 1px, solid, #000;
+    border-radius: 0.35rem;
+    background-color: #f5de49;
+    font-weight: bold;    
 }

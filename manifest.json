@@ -8,7 +8,10 @@
     "content_scripts": [
         {
             "css": ["styles.css"],
-            "js": [ "scripts/buttonManager.js" ],
+            "js": [ 
+                "scripts/buttonManager.js",
+                "scripts/manageButtons.js"
+            ],
             "matches": [ "http://127.0.0.1:5500/*" ],
             "runAt": "document_start"
         }
