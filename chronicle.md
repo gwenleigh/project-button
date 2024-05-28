@@ -2,7 +2,7 @@
 
 **Table of contents**
 - [Facts](#facts)
-  - [Summaries]
+  - [Journal]
     - [Summary Mon 20 May](#summary-mon-20-may): initial setup
     - [Summary Mon 28 May](#summary-tue-28-may): initial setup
 - [Commands used](#commands-used)
@@ -110,6 +110,12 @@
   - `div > [button, button, button ...]` (adopted for now)
 2) Created functions for button set creation
 ![Initial setup](assets/journal/240528_prototype_buttons_01.png)
+
+<br>
+
+3) 21:30 Added function that shows/hides buttons on click.
+4) Added a textarea
+![Hide/show function](assets/journal/20240528_show_hide_function.png)
 
 ## Commands used
 
