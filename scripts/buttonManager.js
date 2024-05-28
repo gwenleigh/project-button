@@ -1,12 +1,33 @@
-const targetElement = document.querySelector("#target-span");
+// BUTTONS
+// Actions
+function toggleAllButtonsByParent(buttonID) {
+    const buttonsToToggle = document.querySelectorAll(`.${buttonID}-child-button`);
+    console.log(buttonID)
+    buttonsToToggle.forEach(element => {
+        element.classList.toggle("hidden");
+        element.classList.toggle('unset');
+    })
+}
 
-function createChildButtons(buttonsArray) {
+function toggleAllButtonsbyChild(buttonClass) {
+    const buttonsToToggle = document.querySelectorAll(`.${buttonClass}-child-button`);
+    console.log(buttonClass)
+    buttonsToToggle.forEach(element => {
+        element.classList.toggle('unset');
+        element.classList.toggle("hidden");
+    })
+}
+
+// Initialise
+function createChildButtons(buttonClass, buttonsArray) {
     let buttonsList = []
     for (let i in buttonsArray) {
         let childButton  = document.createElement("button");
         childButton.id = `button-${buttonsArray[i]}`
         childButton.innerText = buttonsArray[i];
-        childButton.classList = [ "button-style hidden" ];
+        childButton.classList = [ `${buttonClass.toLowerCase()}-child-button child-button hidden` ];
+        childButton.onclick = function(){toggleAllButtonsbyChild(buttonClass)};
+        childButton.title = "";
 
         buttonsList.push(childButton);
     }
@@ -20,7 +41,8 @@ function createParentButton(buttonID) {
     parentButton.id = `label-button-${buttonID}`
     parentButton.innerText = capIP;
     console.log(capIP);
-    parentButton.classList = ["label-button-style"];
+    parentButton.classList = ["label-button"];
+    parentButton.onclick = function(){toggleAllButtonsByParent(buttonID)};
 
     return parentButton;
 }
@@ -31,10 +53,9 @@ function createDropDownButtonSet(buttonSetID, childButtonsArray) {
     parentDiv.classList = [ "buttons-div" ];
 
     let parentButton = createParentButton(buttonSetID);
+    let childButtonsList = createChildButtons(buttonSetID, childButtonsArray);
+
     parentDiv.append(parentButton);
-
-    let childButtonsList = createChildButtons(childButtonsArray);
-
     childButtonsList.forEach(element => {
         parentDiv.append(element)    
     });

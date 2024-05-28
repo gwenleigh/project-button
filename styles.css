@@ -23,8 +23,6 @@ html, body {
 
 #column1 {
     width: 50%;
-    height: fit-content;
-    padding: 0.5rem;
 }
 
 #column2 {
@@ -35,6 +33,13 @@ html, body {
     width: 20%;
 }
 
+/* Target area */
+.target-area {
+    width: 100%;
+    height: fit-content;
+    padding: 0.5rem;
+}
+
 .test-button-area {
     width: 90%;
     height: 90%;
@@ -43,13 +48,14 @@ html, body {
     background-color: green;    
 }
 
+/* Button style */
 .buttons-div {
     width: fit-content;   
     display: flex;
     flex-direction: column;
 }
 
-.label-button-style {
+.label-button {
     padding: 0.5rem 1rem 0.5rem 1rem;
     border: 1px, solid, #000;
     border-radius: 0.35rem;
@@ -57,7 +63,7 @@ html, body {
     font-weight: bold;
 }
 
-.button-style {
+.child-button {
     padding: 0.5rem 1rem 0.5rem 1rem;
     border: 1px, solid, #000;
     border-radius: 0.35rem;
@@ -65,20 +71,17 @@ html, body {
     font-weight: bold;
 }
 
-/* .hidden {
+/* Button hide and show */
+.hidden {
     display: none;
-} */
-
-.ul-style {
-    width: fit-content;
-    background-color: #cfb300;
 }
 
-.li-style { 
-    padding: 0.5rem 1rem 0.5rem 1rem;
-    width: fit-content;
-    border: 1px, solid, #000;
-    border-radius: 0.35rem;
-    background-color: #f5de49;
-    font-weight: bold;    
+.unset { 
+    display: inline;
+}
+
+/* Input area */
+.input-area {
+    width: 100%;
+    height: 50vw;
 }
