@@ -1,3 +1,13 @@
+# Chronicle
+
+**Table of contents**
+- [Facts](#facts)
+  - [Journal]
+    - [Summary Mon 20 May](#summary-mon-20-may): initial setup
+    - [Summary Mon 28 May](#summary-tue-28-may): initial setup
+- [Commands used](#commands-used)
+- [Resources](#resources)
+- [For later](#for-later)
 
 ## Facts
 ### 0.0.2
@@ -51,6 +61,61 @@
 - Tabs 
   - `chrome.tabs`: this API is used to group and ungroup tabs, or to query what tabs are in groups.
   - `chrome.tabGroups`: this API allows you to interact with the browser's tab grouping system. Use this API to modify and rearrange tab groups in the browser. 
+
+### 101-setup
+- Element: `insertAdjacentElement()` method https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentElement
+  - `'beforebegin`: Before the targetElement itself.
+  - `afterbegin`: Just inside the targetElement, before its first child.
+  - `beforeend`: Just inside the targetElement, after its last child.
+  - `afterend`: After the targetElement itself.
+- `manifest.json`: it is totally possible to run the extension locally on a local file that's not hosted on the internet. Make sure to give permissions to access and make changes to the target file.
+  ```
+    {
+      ...
+      "content_scripts": [
+          {
+              "css": ["styles.css"],
+              "js": [ "scripts/buttonManager.js" ],
+              "matches": [ "http://127.0.0.1:5500/*" ],
+              "runAt": "document_start"
+          }
+      ],
+      "permissions": [
+          "http://127.0.0.1:5500/*"
+      ]
+    }
+  ```
+#### Summary Mon 20 May
+1) `html/css`: Set up a mock web page with a target area for buttons (that will be created by extension).
+2) Configured `manifest.json`/`"permissions"` for local testing.
+3) `JavaScript`: Tested running a script on the target.
+![Initial setup](assets/journal/240520_initial_setup.png)
+
+### `102-prototype-buttons`
+- `push()` for arrays
+  ```
+  let array = [1, 2, 3];
+  array.push(4);
+  ```
+- `append()` for DOM nodes (elements)
+  ```
+  let parent = document.getElementById('parent');
+  let newElement = document.createElement('div');
+  parent.append(newElement); // newElement is now a child of parent
+  ```
+
+#### Summary Tue 28 May
+1) Tested DOM element structures for button composition
+  - `ul > [li, li, li ...]`
+  - `div > [button, button, button ...]` (adopted for now)
+2) Created functions for button set creation
+![Initial setup](assets/journal/240528_prototype_buttons_01.png)
+
+<br>
+
+3) 21:30 Added function that shows/hides buttons on click.
+4) Added a textarea
+![Hide/show function](assets/journal/20240528_show_hide_function.png)
 
 ## Commands used
 
