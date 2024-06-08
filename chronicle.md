@@ -5,6 +5,7 @@
   - [Journal]
     - [Summary Mon 20 May](#summary-mon-20-may): initial setup
     - [Summary Mon 28 May](#summary-tue-28-may): initial setup
+    - [Summary Sat 08 Jun](#summary-sat-8-june): TIL button using button prototype
 - [Commands used](#commands-used)
 - [Resources](#resources)
 - [For later](#for-later)
@@ -88,8 +89,8 @@
 #### Summary Mon 20 May
 1) `html/css`: Set up a mock web page with a target area for buttons (that will be created by extension).
 2) Configured `manifest.json`/`"permissions"` for local testing.
-3) `JavaScript`: Tested running a script on the target.
-![Initial setup](assets/journal/240520_initial_setup.png)
+3) `JavaScript`: Tested running a script on the target.  
+<img src="assets/journal/240520_initial_setup.png" alt="Initial setup" width="1000" > 
 
 ### `102-prototype-buttons`
 - `push()` for arrays
@@ -108,14 +109,57 @@
 1) Tested DOM element structures for button composition
   - `ul > [li, li, li ...]`
   - `div > [button, button, button ...]` (adopted for now)
-2) Created functions for button set creation
-![Initial setup](assets/journal/240528_prototype_buttons_01.png)
+2) Created functions for button set creation  
+<img src="assets/journal/240528_prototype_buttons_01.png" alt="Initial setup" width="1000" > 
 
 <br>
 
 3) 21:30 Added function that shows/hides buttons on click.
 4) Added a textarea
+<img src="" alt="" width="800" > 
 ![Hide/show function](assets/journal/20240528_show_hide_function.png)
+
+### `103-test-git-buttons`
+#### Error types
+- `TypeError`
+- `ReferenceError`: this means the referenced variable is undefined.
+
+#### Variable types
+- `var` for arrays
+  ```
+  let array = [1, 2, 3];
+  array.push(4);
+  ```
+- `let` for a block-scoped variable that might change (mutable).
+- `const`: for block-scope + immutability 
+  - a block-scoped variable that should not be reassigned after its initial value is set.
+  - block-scope
+    ```
+    const b = 60;
+    b = 70; // TypeError: Assignment to constant variable.
+
+    const obj = { key: 'value' };
+    obj.key = 'newValue'; // This is allowed
+    console.log(obj.key); // 'newValue'
+    ```
+  - Immutability
+    ```
+    {
+      const a = 50;
+      console.log(a); // 50
+    }
+    console.log(a); // ReferenceError: a is not defined
+
+    ```
+
+#### Summary Sat 8 June
+1) Using the prototype buttons from the [`102-prototype-buttons`](https://github.com/gwenleigh/project-button/tree/102-prototype-buttons) branch, created a new set of buttons. 
+2) Design and functions
+  - The buttons are the tree of all my markdown notes in my [TIL repo](https://github.com/gwenleigh/til). 
+  - The default buttons represent the directories, and clicking on the dropdown buttons will open a new tab of each markdown notes. 
+  - `css`: the styling follows the Gitlab's css styles.   
+<img src="assets/journal/20240608_til_buttons.png" alt="TIL buttons" width=700>
+
 
 ## Commands used
 
