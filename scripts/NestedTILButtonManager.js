@@ -1,4 +1,45 @@
 // BUTTONS
+// Variables 
+const rootURL = "https://github.com/gwenleigh/til/tree/main/";
+const iconDirectory = `<i class="fa-solid fa-folder"></i>`
+const iconFile = `<i class="fa-light fa-file"></i>`
+
+// Retrieve data from Github repository directory structure 
+async function fetchElements(url) {
+    const entriesArray = [];
+
+    try {
+        // url cleaning
+        const processedUrl = url.replace(", (Directory)", "");
+
+        // Fetch the HTML content from the URL
+        const response = await fetch(processedUrl);
+        const text = await response.text();
+
+        // Create a new DOM parser
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(text, 'text/html');
+
+        // Select specific elements (for example, all paragraphs)
+        const directoryDivs = doc.getElementsByClassName('react-directory-truncate')
+
+        for (let i=0; i < directoryDivs.length; i++) {
+            const anchor = directoryDivs[i].querySelector('a');
+            const ariaLabel = anchor.getAttribute('aria-label');
+            
+            if (!ariaLabel.includes('assets')) {
+                entriesArray.push(ariaLabel);
+            }
+        }
+
+    } catch (error) {
+        console.error('Error fetching elements:', error);
+    }
+
+    const uniqueEntriesArray = [...new Set(entriesArray)];
+    return uniqueEntriesArray;
+}
+
 // Actions
 function toggleAllButtonsByParent(buttonID) {
     const buttonsToToggle = document.querySelectorAll(`.${buttonID}-child-button`);
@@ -28,7 +69,18 @@ function editFilename(string, capitalise=false) {
     return parsedString
 }
 
-const rootURL = "https://github.com/gwenleigh/til/tree/main/";
+
+function getRootDirectories() {
+    
+    fetch(rootURL)
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok ' + response.statusText);
+        }
+        return response.text();
+    })
+}
+
 // Fetch text in <article>
 // Fetch filenames from directories from the main branch page. 
 function fetchTextInArticle(directory, filename) {
@@ -38,13 +90,14 @@ function fetchTextInArticle(directory, filename) {
     fetch(destURL)
     .then(response => {
         if (!response.ok) {
-          throw new Error('Network response was not ok ' + response.statusText);
+            throw new Error('Network response was not ok ' + response.statusText);
         }
         return response.text();
       })
       .then(html => {
         let articleElement = document.querySelector('article');
         textContent = articleElement.textContent;
+        console.log(`textContent: ${textContent}`)
       })
       .catch(error => {
         console.error('There has been a problem with your fetch operation:', error);
@@ -54,7 +107,9 @@ function fetchTextInArticle(directory, filename) {
 
 function createTILChildButtons(buttonClass, buttonsArray) {
     let buttonsList = []
-    for (let i in buttonsArray) {
+    // buttonsArray is coming in empty. 
+
+    for (var i = 0; i < buttonsArray.length; i++) {        
         let childButton  = document.createElement("button");
         childButton.id = `button-${buttonsArray[i]}`
         childButton.title = fetchTextInArticle(buttonClass, buttonsArray[i])
@@ -63,7 +118,7 @@ function createTILChildButtons(buttonClass, buttonsArray) {
         childButton.onclick = function(){
             toggleAllButtonsbyChild(buttonClass);
             window.open(rootURL + buttonClass + "/" + buttonsArray[i], '_blank');
-        };
+        };       
         buttonsList.push(childButton);
     }
     return buttonsList;
@@ -74,27 +129,11 @@ function createParentButton(buttonID) {
 
     let parentButton = document.createElement("button");
     parentButton.id = `label-button-${buttonID}`
-    parentButton.innerText = capIP;
+    parentButton.innerHTML = `${iconDirectory} ${capIP}`;
     parentButton.classList = ["label-button"];
     parentButton.onclick = function(){toggleAllButtonsByParent(buttonID)};
 
     return parentButton;
-}
-
-function createDropDownButtonSet(buttonSetID, childButtonsArray) {
-    let parentDiv = document.createElement("div");
-    parentDiv.id = `parent-div-${buttonSetID}`;
-    parentDiv.classList = [ "buttons-div" ];
-
-    let parentButton = createParentButton(buttonSetID);
-    let childButtonsList = createChildButtons(buttonSetID, childButtonsArray);
-
-    parentDiv.append(parentButton);
-    childButtonsList.forEach(element => {
-        parentDiv.append(element)    
-    });
-
-    return parentDiv;
 }
 
 function createTILButtonSet(buttonSetID, childButtonsArray) {
@@ -102,8 +141,10 @@ function createTILButtonSet(buttonSetID, childButtonsArray) {
     parentDiv.id = `parent-div-${buttonSetID}`;
     parentDiv.classList = [ "buttons-div" ];
 
+    // 🪲🪲🪲 childButtonsArray is not empty BUT 
     let parentButton = createParentButton(buttonSetID);
-    let childButtonsList = createTILChildButtons(buttonSetID, childButtonsArray);
+    let childButtonsList = createTILChildButtons(buttonSetID, childButtonsArray); // 🪲🪲🪲 It gets empty here 
+    // childButtonsList comes out empty for some reason. 
 
     parentDiv.append(parentButton);
     childButtonsList.forEach(element => {

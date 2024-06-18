@@ -7,26 +7,16 @@
     }, 
     "content_scripts": [
         {
-            "css": ["styles.css"],
-            "js": [ 
-                "scripts/buttonManager.js",
-                "scripts/arrangeButtons.js"
-            ],
-            "matches": [ "http://127.0.0.1:5500/*" ],
-            "runAt": "document_start"
-        },
-        {
             "css": ["til-styles.css"],
             "js": [ 
-                "scripts/TILButtonManager.js",
-                "scripts/TILButtons.js"
+                "scripts/NestedTILButtonManager.js",
+                "scripts/NestedTILButton.js"
             ],
             "matches": [ "https://github.com/gwenleigh/til/*" ],
             "runAt": "document_start"
         }
     ],
     "permissions": [
-        "http://127.0.0.1:5500/*",  
         "https://github.com/gwenleigh/til/*"
     ]
 }

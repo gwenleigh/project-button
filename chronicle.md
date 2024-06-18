@@ -119,7 +119,7 @@
 <img src="" alt="" width="800" > 
 ![Hide/show function](assets/journal/20240528_show_hide_function.png)
 
-### `103-test-git-buttons`
+### `103-test-til-buttons`
 #### Error types
 - `TypeError`
 - `ReferenceError`: this means the referenced variable is undefined.
@@ -188,6 +188,8 @@ https://developer.chrome.com/docs/extensions/get-started/tutorial/hello-world#st
 
 ### 0.0.3
 - Extension service worker https://developer.chrome.com/docs/extensions/develop/concepts/service-workers
+  - `git tag x.x.x`
+  - `git push origin --tags`
 - Scripting API `chrome.scripting` https://developer.chrome.com/docs/extensions/reference/api/scripting
 - Badge https://developer.chrome.com/docs/extensions/mv2/reference/browserAction#badge
 
@@ -198,6 +200,10 @@ https://developer.chrome.com/docs/extensions/get-started/tutorial/hello-world#st
 
 ### 0.0.5
 - `Intl.Collator` https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Collator
+
+### 103-test-til-buttons
+- `git`: rename local and remote branch https://stackoverflow.com/questions/30590083/git-how-to-rename-a-branch-both-local-and-remote
+
 
 ## Assets used
 ### 0.0.1
